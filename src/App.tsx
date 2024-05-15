@@ -1,20 +1,19 @@
-import { useState } from "react";
 import "./App.scss";
+import { About } from "./components/About";
+import { Counter } from "./components/Counter";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { Layout } from "./components/Layout";
 
 function App() {
-  const [count, setCount] = useState(0);
-
   return (
-    <div className="App">
-      <h1>Counter</h1>
-      <p>{count}</p>
-      <button className="btn square" onClick={() => setCount(count + 1)}>
-        +
-      </button>
-      <button className="btn square" onClick={() => setCount(count - 1)}>
-        -
-      </button>
-    </div>
+    <Router>
+      <Routes>
+        <Route element={<Layout />}>
+          <Route path="/" element={<Counter />} />
+          <Route path="/about" element={<About />} />
+        </Route>
+      </Routes>
+    </Router>
   );
 }
 
